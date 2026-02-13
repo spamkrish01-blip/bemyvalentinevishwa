@@ -1,1 +1,223 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Valentine's Proposal</title>\n    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>\n    <style>\n        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }\n        #gif { display: none; }\n    </style>\n</head>\n<body>\n    <h1>Will you be my Valentine?</h1>\n    <p>Click the button below to see a special surprise!</p>\n    <button id="yes-button">Yes</button>\n    <div id="gif">\n        <h2>Thank you!</h2>\n        <img src="https://media.tenor.com/images/abcde12345abcdefg12345abcde12345/tenor.gif" alt="Valentine's GIF">\n    </div>\n    <script>\n        $(document).ready(function() {\n            $('#yes-button').click(function() {\n                $('#gif').show();\n            });\n        });\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal - Vishwa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff69b4, #ffc0cb);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .heart-bg {
+            position: absolute;
+            font-size: 50px;
+            opacity: 0.3;
+            animation: float 6s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            z-index: 10;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #ff1493;
+            margin-bottom: 20px;
+            font-size: 32px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #00d084, #00a86b);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 208, 132, 0.4);
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 208, 132, 0.6);
+        }
+
+        .no-btn {
+            background: #ddd;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-btn:hover {
+            background: #ccc;
+            transform: scale(0.95);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .celebration {
+            animation: celebrate 0.6s ease-out;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .gif-container {
+            margin-top: 30px;
+        }
+
+        .tenor-gif-embed {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            font-size: 20px;
+            animation: confettiFall 3s ease-out forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-bg" style="left: 10%; top: 10%;">💕</div>
+    <div class="heart-bg" style="right: 10%; top: 20%;">💕</div>
+    <div class="heart-bg" style="left: 20%; bottom: 20%;">💕</div>
+    <div class="heart-bg" style="right: 15%; bottom: 15%;">💕</div>
+
+    <div class="container" id="proposal">
+        <h1>Will you be my Valentine, Vishwa? 💕</h1>
+        <p>I really like you and would love to celebrate this Valentine's Day with you!</p>
+        <div class="buttons">
+            <button class="yes-btn" onclick="handleYes()">Yes ❤️</button>
+            <button class="no-btn" onclick="handleNo()">No 😔</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="celebration">
+        <h1 class="celebration">Yay! I'm so happy! 🎉</h1>
+        <p>Can't wait to celebrate Valentine's Day with you!</p>
+        <div class="gif-container">
+            <div class="tenor-gif-embed" data-postid="11397231996208728070" data-share-method="host" data-aspect-ratio="1.09211" data-width="100%">
+                <a href="https://tenor.com/view/besito-catlove-gif-11397231996208728070">Besito Catlove GIF</a>
+                from <a href="https://tenor.com/search/besito-gifs">Besito GIFs</a>
+            </div>
+            <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        </div>
+    </div>
+
+    <script>
+        function handleYes() {
+            const proposal = document.getElementById('proposal');
+            const celebration = document.getElementById('celebration');
+            
+            proposal.classList.add('hidden');
+            celebration.classList.remove('hidden');
+            
+            createConfetti();
+        }
+
+        function handleNo() {
+            const proposal = document.getElementById('proposal');
+            const yesBtn = proposal.querySelector('.yes-btn');
+            
+            yesBtn.style.transform = 'scale(1.3)';
+            
+            const noBtn = proposal.querySelector('.no-btn');
+            const randomX = (Math.random() - 0.5) * 200;
+            const randomY = (Math.random() - 0.5) * 200;
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        function createConfetti() {
+            const confettiPieces = ['🎉', '💕', '✨', '🎊', '💖', '🌹', '💑'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.textContent = confettiPieces[Math.floor(Math.random() * confettiPieces.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-20px';
+                confetti.style.delay = Math.random() * 0.5 + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 3500);
+            }
+        }
+    </script>
+</body>
+</html>
