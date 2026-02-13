@@ -1,5 +1,6 @@
 # bemyvalentinevishwa
-valentines day proposa; 
+valentines day proposal
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +36,7 @@ valentines day proposa;
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             animation: slideIn 1s forwards;
+            text-align: center;
         }
         @keyframes slideIn {
             from { transform: translateY(-50px); opacity: 0; }
@@ -54,6 +56,12 @@ valentines day proposa;
         }
         .yes { background: green; color: white; }
         .no { background: red; color: white; }
+        .home-btn { background: #4CAF50; color: white; margin-top: 15px; }
+        .cat-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -76,8 +84,13 @@ yesButton.addEventListener('click', function() {
         });
         
         noButton.addEventListener('click', function() {
-            note.innerHTML = '<h1>Oh no! Maybe next time!</h1>';
+            const catImageUrl = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwwUAxEAAwwUAwEA...'; // Placeholder - you'll need to add the actual base64 or image URL
+            note.innerHTML = '<div style="text-align: center;"><img src="https://imgur.com/your-image-url.jpg" alt="Sad cat meme" class="cat-image" style="max-width: 400px;"><p style="font-size: 24px; margin-top: 20px;">Are you going to say no to me, huh?</p><button class="home-btn" onclick="goHome()">Back to Home</button></div>';
         });
+        
+        function goHome() {
+            location.reload();
+        }
         
         function celebrate() {
             for (let i = 0; i < 100; i++) {
